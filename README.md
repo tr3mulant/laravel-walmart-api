@@ -26,13 +26,13 @@ This package is not published to packagist so modify your `composer.json`'s repo
 Publish the config file
 
 ```bash
-$ php artisan vendor:publish --provider="TremulantTech\LaravelWalmartApi\LaravelWalmartApiServiceProvider" --tag="config"
+php artisan vendor:publish --provider="TremulantTech\LaravelWalmartApi\LaravelWalmartApiServiceProvider" --tag="config"
 ```
 
 Publish the migrations
 
 ```bash
-$ php artisan vendor:publish --provider="TremulantTech\LaravelWalmartApi\LaravelWalmartApiServiceProvider" --tag="migrations"
+php artisan vendor:publish --provider="TremulantTech\LaravelWalmartApi\LaravelWalmartApiServiceProvider" --tag="migrations"
 ```
 
 ## Usage
