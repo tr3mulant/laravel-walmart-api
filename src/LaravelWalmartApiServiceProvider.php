@@ -45,8 +45,15 @@ class LaravelWalmartApiServiceProvider extends ServiceProvider
             __DIR__.'/../config/walmart-api.php' => config_path('walmart-api.php')
         ], 'config');
 
+        $time = time();
+
+        $sellerTable = database_path('migrations/' . date('Y_m_d_his', $time) . '_create_walmart_api_sellers_table.php');
+
+        $credentialsTable = database_path('migrations/' . date('Y_m_d_his', $time + 1) . '_create_walmart_api_credentials_table.php');
+
         $this->publishes([
-            __DIR__.'/../database/migrations' => database_path('migrations'),
+            __DIR__.'/../database/migrations/create_walmart_api_sellers_table.php' => $sellerTable,
+            __DIR__.'/../database/migrations/create_walmart_api_credentials_table.php' => $credentialsTable,
         ], 'migrations');
     }
 
