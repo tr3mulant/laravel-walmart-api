@@ -4,25 +4,21 @@ This package utilizes the library [highsidelabs/walmart-api-php](<[https://](htt
 
 ## Install
 
-This package is not published to packagist so modify your `composer.json`'s repositories key.
+This package is not published to packagist so modify your `composer.json`'s repositories key and require key.
 
 ```json
 {
-    "name": "my project",
-    ...
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/tr3mulant/laravel-walmart-api.git"
-        }
-    ],
+  "name": "my project",
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/tr3mulant/laravel-walmart-api.git"
+    }
+  ],
+  "require": {
+    "tremulanttech/laravel-walmart-api": "dev-main"
+  }
 }
-```
-
-Now tell composer to require the package.
-
-```bash
-$ composer require tr3mulant/laravel-walmart-api
 ```
 
 ## Setup
