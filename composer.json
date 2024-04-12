@@ -1,0 +1,51 @@
+{
+    "name": "tremulanttech/laravel-walmart-api",
+    "description": "A Laravel wrapper for Walmart's Seller API (via highsidelabs/walmart-api)",
+    "type": "library",
+    "license": "BSD-3-Clause",
+    "authors": [
+        {
+            "name": "Tremulant Technologies",
+            "homepage": "https://tremulanttech.com",
+            "email": "scott_st.john@tremulanttech.com"
+        }
+    ],
+    "keywords": [
+        "laravel",
+        "wrapper",
+        "walmart",
+        "walmart-api",
+        "walmart-marketplace-api",
+        "walmart-content-providers-api",
+        "walmart-1p-suppliers-api",
+        "ecommerce",
+        "sdk",
+        "rest",
+        "api"
+    ],
+    "require": {
+        "highsidelabs/walmart-api": "^0.7.0",
+        "illuminate/support": "^11.2",
+        "illuminate/database": "^11.2"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.52"
+    },
+    "scripts": {
+        "lint": "vendor/bin/php-cs-fixer fix ."
+    },
+    "autoload": {
+        "psr-4": {
+            "TremulantTech\\LaravelWalmartApi\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "TremulantTech\\LaravelWalmartApi\\LaravelWalmartApiServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

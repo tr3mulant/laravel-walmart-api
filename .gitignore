@@ -1,0 +1,4 @@
+.php-cs-fixer.cache
+.vscode
+vendor
+composer.lock
