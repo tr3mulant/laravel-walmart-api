@@ -45,7 +45,7 @@ class LaravelWalmartApiServiceProvider extends ServiceProvider
             __DIR__.'/../config/walmart-api.php' => config_path('walmart-api.php')
         ], 'config');
 
-        $this->publishesMigrations([
+        $this->publishes([
             __DIR__.'/../database/migrations' => database_path('migrations'),
         ], 'migrations');
     }
