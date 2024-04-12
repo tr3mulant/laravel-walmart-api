@@ -42,7 +42,7 @@ class LaravelWalmartApiServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__.'/../config/walmart-api.php' => config_path('walmart-api.php')
+            __DIR__ . '/../config/walmart-api.php' => config_path('walmart-api.php'),
         ], 'config');
 
         $time = time();
@@ -52,8 +52,8 @@ class LaravelWalmartApiServiceProvider extends ServiceProvider
         $credentialsTable = database_path('migrations/' . date('Y_m_d_his', $time + 1) . '_create_walmart_api_credentials_table.php');
 
         $this->publishes([
-            __DIR__.'/../database/migrations/create_walmart_api_sellers_table.php' => $sellerTable,
-            __DIR__.'/../database/migrations/create_walmart_api_credentials_table.php' => $credentialsTable,
+            __DIR__ . '/../database/migrations/create_walmart_api_sellers_table.php' => $sellerTable,
+            __DIR__ . '/../database/migrations/create_walmart_api_credentials_table.php' => $credentialsTable,
         ], 'migrations');
     }
 
@@ -71,14 +71,14 @@ class LaravelWalmartApiServiceProvider extends ServiceProvider
      * Try to convert a namespace to country for the dummy configuration.
      *
      * @param string $cls
-     * @return string
      * @throws \InvalidArgumentException
+     * @return string
      */
     private function handleCountry(string $cls): string
     {
         $country = str($cls)->beforeLast('\\')->afterLast('\\')->lower()->toString();
 
-        if (in_array($country, Country::all())) {
+        if (in_array($country, Country::all(), true)) {
             return $country;
         }
 

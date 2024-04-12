@@ -3,7 +3,7 @@
 return [
     'seller' => [
         /**
-         * A name to identify the Seller and owner of Credentials
+         * A name to identify the Seller and owner of Credentials.
          */
         'name' => env('WALMART_API_SELLER_NAME', env('APP_NAME', 'test')),
     ],
@@ -46,15 +46,15 @@ return [
     ],
     /**
      * OAuth redirect url for authorization. Used when grant_type is
-     * authorization_code
+     * authorization_code.
      */
     'redirect_url' => env('WALMART_API_REDIRECT_URL'),
     /**
-     * Enable debug mode
+     * Enable debug mode.
      */
     'debug' => env('WALMART_API_DEBUG', false),
     /**
-     * File to write debug info to
+     * File to write debug info to.
      */
     'debug_file' => env('WALMART_API_DEBUG_FILE', 'php://output'),
 ];

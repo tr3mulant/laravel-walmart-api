@@ -1,10 +1,10 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
-class CreateWalmartApiCredentialsTable extends Migration
+class create_walmart_api_credentials_table extends Migration
 {
     /**
      * Run the migrations.
@@ -37,8 +37,8 @@ class CreateWalmartApiCredentialsTable extends Migration
             $table->enum('grant_type', ['authorization_code', 'refresh_token', 'client_credentials'])
                 ->default('client_credentials');
 
-            $table->enum('country', [\Walmart\Enums\Country::all()])
-                ->default(\Walmart\Enums\Country::US);
+            $table->enum('country', [Walmart\Enums\Country::all()])
+                ->default(Walmart\Enums\Country::US);
 
             $table->timestamps();
         });

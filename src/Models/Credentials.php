@@ -25,7 +25,7 @@ class Credentials extends Model
      * The attributes that are mass assignable.
      * Think the client_id === consumer_id and client_secret === private_key
      * and are just named different depending on the auth schema used by the
-     * endpoint trying to be consumed. Good job walmart :/
+     * endpoint trying to be consumed. Good job walmart :/.
      *
      * @var array
      */
@@ -68,7 +68,7 @@ class Credentials extends Model
     protected ?string $access_token = null;
 
     /**
-     * Usually a bearer token
+     * Usually a bearer token.
      *
      * @var string|null
      */

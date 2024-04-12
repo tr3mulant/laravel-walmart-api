@@ -76,20 +76,20 @@ final class LaravelWalmartApi extends Walmart
     ];
 
     /**
-     * Creates an API instance with a set of Credentials. Api
+     * Creates an API instance with a set of Credentials.
      *
      * @param string $apiCls The SP API class to instantiate.
      * @param Credentials|int|string $credentials The Credentials or id of the
      * credentials to use for an SP API class.
-     * @return \Walmart\Apis\BaseApi
      * @throws \InvalidArgumentException When attempting to make an unsupported
      * api class
      * @throws \Illuminate\Database\Eloquent\ModelNotFoundException When
      * missing credentials record.
+     * @return BaseApi
      */
     public static function make(string $apiCls, Credentials|int|string $credentials): BaseApi
     {
-        if (!in_array($apiCls, static::API_CLASSES)) {
+        if (!in_array($apiCls, static::API_CLASSES, true)) {
             throw new \InvalidArgumentException("Invalid Walmart API class: $apiCls");
         }
 
@@ -106,11 +106,12 @@ final class LaravelWalmartApi extends Walmart
      * @param string $provider
      * @param Credentials $credentials
      * @param bool $clone
+     * @throws \BadMethodCallException When provider does not exist
      * @return Walmart
      */
     public static function provider(string $provider, Credentials $credentials, bool $clone = true): Walmart
     {
-        if (!in_array($provider, self::API_PROVIDERS)) {
+        if (!in_array($provider, self::API_PROVIDERS, true)) {
             throw new \BadMethodCallException("Method $provider does not exist");
         }
 

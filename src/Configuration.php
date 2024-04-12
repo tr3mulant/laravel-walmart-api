@@ -15,9 +15,9 @@ class Configuration extends WalmartConfiguration
     private bool $dummy;
 
     /**
-     * Build a Configuration object
+     * Build a Configuration object.
      *
-     * @param boolean $dummy
+     * @param bool $dummy
      * @param array $options
      */
     public function __construct(bool $dummy, array $options)
@@ -48,7 +48,7 @@ class Configuration extends WalmartConfiguration
 
     /**
      * Maps Credential model attributes to WalmartConfiguration properties.
-     * Creates an AccessToken if given
+     * Creates an AccessToken if given.
      *
      * @param array $options
      * @return array
