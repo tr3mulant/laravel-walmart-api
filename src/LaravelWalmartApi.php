@@ -2,7 +2,7 @@
 
 namespace TremulantTech\LaravelWalmartApi;
 
-use TremulantTech\Models\Credentials;
+use TremulantTech\LaravelWalmartApi\Models\Credentials;
 use Walmart\Apis\BaseApi;
 use Walmart\Apis\CP;
 use Walmart\Apis\MP;
@@ -111,7 +111,7 @@ final class LaravelWalmartApi extends Walmart
      */
     public static function provider(string $provider, Credentials $credentials, bool $clone = true): Walmart
     {
-        if (!in_array($provider, self::API_PROVIDERS, true)) {
+        if (!isset(self::API_PROVIDERS[$provider])) {
             throw new \BadMethodCallException("Method $provider does not exist");
         }
 
