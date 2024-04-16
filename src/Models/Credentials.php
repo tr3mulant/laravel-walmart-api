@@ -1,6 +1,6 @@
 <?php
 
-namespace TremulantTech\Models;
+namespace TremulantTech\LaravelWalmartApi\Models;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Casts\Attribute;
