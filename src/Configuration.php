@@ -34,7 +34,7 @@ class Configuration extends WalmartConfiguration
      * @param string $method The HTTP method being used to call the endpoint
      * @param int $timestamp The timestamp of the request, to millisecond precision
      * @param string $query The querystring of the request, if any
-     * @throws RuntimeException
+     * @throws Exception
      * @return string The request signature
      */
     protected function sign(string $path, string $method, int $timestamp, string $query = ''): string
