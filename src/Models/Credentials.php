@@ -338,7 +338,7 @@ class Credentials extends Model
      *
      * @return string
      */
-    protected function getAccessTokenCacheKey(): string
+    public function getAccessTokenCacheKey(): string
     {
         return "walmart-api.access_token.{$this->id}";
     }
@@ -348,7 +348,7 @@ class Credentials extends Model
      *
      * @return string
      */
-    protected function getExpiresAtCacheKey(): string
+    public function getExpiresAtCacheKey(): string
     {
         return "walmart-api.expires_at.{$this->id}";
     }
