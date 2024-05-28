@@ -23,8 +23,14 @@
         "rest",
         "api"
     ],
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/tr3mulant/walmart-api-php"
+        }
+    ],
     "require": {
-        "highsidelabs/walmart-api": "^0.7.0",
+        "highsidelabs/walmart-api": "dev-canada-xml-compatibility",
         "illuminate/support": "^9.0|^10.0|^11.0",
         "illuminate/database": "^9.0|^10.0|^11.0"
     },
