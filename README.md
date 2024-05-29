@@ -6,7 +6,7 @@ This package utilizes the library [highsidelabs/walmart-api-php](https://github.
 
 ## Install
 
-This package is not published to packagist so modify your `composer.json`'s repositories key and require key.
+This package is not published to [packagist](https://packagist.org/) so modify your `composer.json`'s repositories key and require key.
 
 ```json
 {
@@ -18,7 +18,7 @@ This package is not published to packagist so modify your `composer.json`'s repo
     }
   ],
   "require": {
-    "tremulanttech/laravel-walmart-api": "dev-main"
+    "tremulanttech/laravel-walmart-api": "dev-canada-compatibility"
   }
 }
 ```
