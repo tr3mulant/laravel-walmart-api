@@ -1,6 +1,8 @@
 # Walmart Api wrapper for Laravel projects
 
-This package utilizes the library [highsidelabs/walmart-api-php](<[https://](https://github.com/highsidelabs/walmart-api-php)>) and was inspired by [highsidelabs/laravel-spapi](https://github.com/highsidelabs/laravel-spapi).
+This package utilizes the library [highsidelabs/walmart-api-php](https://github.com/highsidelabs/walmart-api-php) and was inspired by [highsidelabs/laravel-spapi](https://github.com/highsidelabs/laravel-spapi).
+
+**Note** that this branch utilizes a patched fork of `highsidelabs/walmart-api-php` from [tr3mulant/walmart-api-php](https://github.com/tr3mulant/walmart-api-php) that fixes compatibility for the Canadian API calls that return xml.
 
 ## Install
 
