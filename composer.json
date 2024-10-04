@@ -30,7 +30,7 @@
         }
     ],
     "require": {
-        "highsidelabs/walmart-api": "dev-canada-xml-compatibility",
+        "highsidelabs/walmart-api": "^0.7.1",
         "illuminate/support": "^9.0|^10.0|^11.0",
         "illuminate/database": "^9.0|^10.0|^11.0"
     },
