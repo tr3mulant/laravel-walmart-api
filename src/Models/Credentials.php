@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Crypt;
 use TremulantTech\LaravelWalmartApi\Configuration;
 use Walmart\Apis\BaseApi;
+use Walmart\Enums\Country;
 use Walmart\Walmart;
 
 class Credentials extends Model
@@ -259,10 +260,15 @@ class Credentials extends Model
     /**
      * Attempt to get the access token. Will check $this, then Cache, and
      * then attempt a fetch from Walmart's token endpoint.
-     * @return string
+     * 
+     * @return string|null
      */
-    protected function getAccessToken(): string
+    protected function getAccessToken(): ?string
     {
+        if ($this->country === Country::CA) {
+            return null;
+        }
+
         if (!is_null($this->access_token)) {
             return $this->access_token;
         }
@@ -271,41 +277,43 @@ class Credentials extends Model
 
         if (!is_null($cachedToken)) {
             $this->access_token = $cachedToken;
-        } else {
-            $authApi = Walmart::marketplace(
-                new Configuration(false, [
-                    'client_id' => $this->client_id,
-                    'client_secret' => $this->client_secret,
-                    'country' => $this->country,
-                ])
-            )->auth();
 
-            $oAuthToken = $authApi->tokenAPI(
-                $this->grant_type,
-                $this->access_code,
-                config('walmart-api.redirect_url'),
-                $this->refresh_token
-            );
-
-            $this->refresh_token = $oAuthToken->getRefreshToken();
-
-            /**
-             * If we're oAuth'n we need to save the refresh token to the model.
-             * This will clear the current access_token on the instance
-             * and in the cache.
-             */
-            $this->save();
-
-            $this->access_token = $oAuthToken->getAccessToken();
-
-            $this->expires_at = Carbon::now()->addSeconds($oAuthToken->getExpiresIn());
-
-            $this->token_type = $oAuthToken->getTokenType();
-
-            Cache::put($tokenCacheKey, $this->access_token, $this->expires_at);
-
-            Cache::put($this->getExpiresAtCacheKey(), $this->expires_at, $this->expires_at);
+            return $this->access_token;
         }
+
+        $authApi = Walmart::marketplace(
+            new Configuration(false, [
+                'client_id' => $this->client_id,
+                'client_secret' => $this->client_secret,
+                'country' => $this->country,
+            ])
+        )->auth();
+
+        $oAuthToken = $authApi->tokenAPI(
+            $this->grant_type,
+            $this->access_code,
+            config('walmart-api.redirect_url'),
+            $this->refresh_token
+        );
+
+        $this->refresh_token = $oAuthToken->getRefreshToken();
+
+        /**
+         * If we're oAuth'n we need to save the refresh token to the model.
+         * This will clear the current access_token on the instance
+         * and in the cache.
+         */
+        $this->save();
+
+        $this->access_token = $oAuthToken->getAccessToken();
+
+        $this->expires_at = Carbon::now()->addSeconds($oAuthToken->getExpiresIn());
+
+        $this->token_type = $oAuthToken->getTokenType();
+
+        Cache::put($tokenCacheKey, $this->access_token, $this->expires_at);
+
+        Cache::put($this->getExpiresAtCacheKey(), $this->expires_at, $this->expires_at);
 
         return $this->access_token;
     }
@@ -314,10 +322,14 @@ class Credentials extends Model
      * Retrieve the access token expiration.
      * Check cache first, otherwise request a new access token from Walmart and save.
      *
-     * @return Carbon
+     * @return Carbon|null
      */
-    protected function getExpiresAt(): Carbon
+    protected function getExpiresAt(): ?Carbon
     {
+        if ($this->country === Country::CA) {
+            return null;
+        }
+
         if (!is_null($this->expires_at)) {
             return $this->expires_at;
         }
@@ -336,20 +348,28 @@ class Credentials extends Model
     /**
      * Generate a cache key based on the record's id.
      *
-     * @return string
+     * @return string|null
      */
-    public function getAccessTokenCacheKey(): string
+    public function getAccessTokenCacheKey(): ?string
     {
+        if ($this->country === Country::CA) {
+            return null;
+        }
+
         return "walmart-api.access_token.{$this->id}";
     }
 
     /**
      * Generate a cache key based on the record's id.
      *
-     * @return string
+     * @return string|null
      */
-    public function getExpiresAtCacheKey(): string
+    public function getExpiresAtCacheKey(): ?string
     {
+        if ($this->country === Country::CA) {
+            return null;
+        }
+
         return "walmart-api.expires_at.{$this->id}";
     }
 }
